@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "/Users/rubenvillalobos/Desktop/bootcamp/udemy-react-class/project-2/Interactive-Components/Trip Planner/public/index.css";
 
 const messages = [
@@ -7,7 +8,20 @@ const messages = [
 ];
 
 export default function App() {
-  const step =1;
+  const [step, setStep] = useState(1)
+  // const step =1;
+
+  function handlePrevious() {
+    // alert('Previous')
+    if(step > 1) setStep(step - 1)
+  }
+
+  function handleNext() {
+    // alert('Next')
+    if(step < 3 ) setStep(step + 1)
+  }
+
+
   return (
     <div className="steps">
       <div className="numbers">
@@ -21,10 +35,10 @@ export default function App() {
       </p>
 
       <div className="buttons">
-        <button style={{ backgroundColor: "#7950f2", color: "#fff" }}>
+        <button style={{ backgroundColor: "#7950f2", color: "#fff" }} onClick={handlePrevious}>
           Previous
         </button>
-        <button style={{ backgroundColor: "#7950f2", color: "#fff" }}>
+        <button style={{ backgroundColor: "#7950f2", color: "#fff" }} onClick={handleNext}>
           Next
         </button>
       </div>
